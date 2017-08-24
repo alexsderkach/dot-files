@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <script>
+
+        window.onload = function () {
+            var groups = [
+                {
+                    name: "News",
+                    websites: [
+                        { title: "reddit", link: "https://www.reddit.com/" },
+                        { title: "hn", link: "https://news.ycombinator.com/" },
+                        { title: "flbd", link: "https://flipboard.com" },
+                        { title: "ny", link: "http://www.nytimes.com" },
+                        { title: "habr", link: "http://habrahabr.ru" },
+                        { title: "medium", link: "https://medium.com" },
+                        { title: "tc", link: "http://techcrunch.com" }
+                    ]
+                },
+                {
+                    name: "Search",
+                    websites: [
+                        { title: "google", link: "https://www.google.com/?gws_rd=ssl" },
+                        { title: "images", link: "https://www.google.com/imghp?gws_rd=ssl" }
+                    ]
+                },
+                {
+                    name: "Social",
+                    websites: [
+                        { title: "vk", link: "https://vk.com/" },
+                        { title: "fb", link: "https://www.facebook.com" },
+                        { title: "gmail", link: "https://mail.google.com/mail/u/0/#inbox" },
+                        { title: "github", link: "https://github.com" },
+                        { title: "dou", link: "http://dou.ua" },
+                        { title: "linkedin", link: "https://www.linkedin.com" }
+                    ]
+                },
+                {
+                    name: "Files",
+                    websites: [
+                        { title: "tpb", link: "https://thepiratebay.se/" },
+                        { title: "kickass", link: "http://kickass.to" },
+                        { title: "rutracker", link: "http://rutracker.org/" }
+                    ]
+                },
+                {
+                    name: "Job",
+                    websites: [
+                        { title: "jdzone", link: "http://java.dzone.com" },
+                        { title: "djinni", link: "http://djinni.co" },
+                        { title: "dou.j", link: "http://jobs.dou.ua/vacancies/?city=Киев&category=Java" }
+                    ]
+                },
+                {
+                    name: "Fun",
+                    websites: [
+                        { title: "youtube", link: "https://www.youtube.com" },
+                        { title: "trakt", link: "https://trakt.tv/dashboard" },
+                        { title: "oll.tv", link: "http://oll.tv/live"},
+                        { title: "espn", link: "http://www.espnfc.com/scores"},
+                        { title: "netflix", link: "https://www.netflix.com/browse"}
+                    ]
+                },
+                {
+                    name: "Other",
+                    websites: [
+                        { title: "murmur", link: "http://asoftmurmur.com/?v=1c4f0047000000000000" },
+                        { title: "dh", link: "http://documentaryheaven.com" },
+                        { title: "in", link: "http://instanerd.me" }
+                    ]
+                }
+            ];
+
+            var content = document.getElementById("content"),
+                    table = dc("table"),
+                    tbody = dc("tbody");
+
+            for (var i in groups) {
+                var group = groups[i];
+                var tr = dc("tr");
+                ac(tr, ac(dc("td"), dc("b", group.name)));
+                ac(tr, dc("td"));
+                var links_td = dc("td");
+                for (var j in group.websites) {
+                    var website = group.websites[j];
+                    var a = dc("a", website.title);
+                    a.href = website.link;
+                    ac(links_td, a);
+                }
+                ac(tr, links_td);
+                ac(tbody, tr);
+            }
+            ac(table, tbody);
+            ac(content, table);
+
+            function dc(tag, text) {
+                var node = document.createElement(tag);
+                node.innerHTML = text || "";
+                return node;
+            }
+
+            function ac(parent, child) {
+                parent.appendChild(child);
+                return parent;
+            }
+        }
+    </script>
+    <style>
+        html, body {
+            font-family: "Roboto";
+            font-style: normal;
+            font-weight: 400;
+            background-color: #eeeeee;
+            line-height: 1.5;
+            font-size: 1rem;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        #box {
+            display: table;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        #content {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        #content table td:first-child {
+            text-align: right;
+        }
+
+        #content table td:last-child {
+            text-align: left;
+        }
+
+        b {
+            font-style: normal;
+            font-weight: bold;
+            border-bottom: 1px solid;
+        }
+
+        a {
+            background: transparent;
+            color: inherit;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        a:hover {
+            border-bottom: 1px solid;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box">
+    <div id="content">
+    </div>
+</div>
+
+</body>
+</html>

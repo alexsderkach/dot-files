@@ -1,0 +1,13 @@
+setopt NO_GLOBAL_RCS
+export LC_ALL=en_US.UTF-8
+
+export ZDIR="$(dirname -- "$(readlink "$HOME/.zshrc")")"
+export ZSH_SUBMODULES_DIR=$ZDIR/submodules
+export ZSH_CONFIGS_DIR=$ZDIR/configs
+export ZSH_TMP_DIR=$ZDIR/.tmp
+
+for config_file ($ZSH_CONFIGS_DIR/*.zsh);
+do
+	echo -ne "${config_file##*/}                       \\r"
+	. $config_file
+done
