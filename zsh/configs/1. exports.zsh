@@ -40,8 +40,8 @@ if is_osx; then
 	export PATH=$PATH:$GOROOT/bin
 	
 	# java
-	jdks=(/Library/Java/JavaVirtualMachines/**/Contents/Home)
-	export JAVA_HOME=$jdks[-1]
+	# jdks=(/Library/Java/JavaVirtualMachines/**/Contents/Home)
+	export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home
 	export IDEA_JDK=$JAVA_HOME
 	export GRADLE_HOME=/usr/local/opt/gradle/libexec
 	export CATALINA_HOME=/usr/local/opt/tomcat/libexec
